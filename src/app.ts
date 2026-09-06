@@ -5,14 +5,14 @@ import {
   validatePhone,
 } from "./validation.js";
 
-type Record = {
+type PersonalRecord = {
   name: string;
   email: string;
   dob: string;
   phone: string;
 };
 
-const records: Record[] = [];
+const records: PersonalRecord[] = [];
 let editingIndex: number | null = null;
 
 const form = document.querySelector<HTMLFormElement>("#details-form");
@@ -58,7 +58,7 @@ form?.addEventListener("submit", (event) => {
   if (phoneErrorElement) phoneErrorElement.textContent = phoneError ?? "";
 
   if (nameError || emailError || dobError || phoneError) {
-    // Accessibilty logic to Focus to field with error
+    // Move focus to the first field with an error
     if (nameError) {
       nameInput?.focus();
     } else if (emailError) {
@@ -72,7 +72,7 @@ form?.addEventListener("submit", (event) => {
     return;
   }
 
-  const record: Record = {
+  const record: PersonalRecord = {
     name,
     email,
     dob,
@@ -96,11 +96,11 @@ recordsContainer?.addEventListener("click", (event) => {
   const index = Number(target.dataset.index);
 
   if (action === "delete") {
-    // Edgecase
     records.splice(index, 1);
 
     if (editingIndex === index) {
       editingIndex = null;
+      form?.reset();
     } else if (editingIndex !== null && editingIndex > index) {
       editingIndex--;
     }
@@ -156,22 +156,4 @@ function renderRecords(): void {
     row.append(nameCell, emailCell, dobCell, phoneCell, actionCell);
     recordsContainer.appendChild(row);
   });
-
-  // recordsContainer.innerHTML = records
-  //   .map(
-  //     (record, index) => `
-  //   <tr>
-  //       <td>${record.name}</td>
-  //       <td>${record.email}</td>
-  //       <td>${record.dob}</td>
-  //       <td>${record.phone}</td>
-
-  //       <td>
-  //         <button type="button" data-action="edit" data-index="${index}">Edit</button>
-  //         <button type="button" data-action="delete" data-index="${index}">Delete</button>
-  //       </td>
-
-  //   </tr>`,
-  //   )
-  //   .join("");
 }

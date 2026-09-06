@@ -88,6 +88,10 @@ input[aria-invalid="true"] {
   border: 2px solid #d4351c;
 }
 
+tbody button + button {
+  margin-left: 8px;
+}
+
 @media (max-width: 600px) {
   .form-row {
     flex-direction: column;

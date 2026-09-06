@@ -35,7 +35,7 @@ form?.addEventListener("submit", (event) => {
     if (phoneErrorElement)
         phoneErrorElement.textContent = phoneError ?? "";
     if (nameError || emailError || dobError || phoneError) {
-        // Accessibilty logic to Focus to field with error
+        // Move focus to the first field with an error
         if (nameError) {
             nameInput?.focus();
         }
@@ -71,7 +71,6 @@ recordsContainer?.addEventListener("click", (event) => {
     const action = target.dataset.action;
     const index = Number(target.dataset.index);
     if (action === "delete") {
-        // Edgecase
         records.splice(index, 1);
         if (editingIndex === index) {
             editingIndex = null;
@@ -116,6 +115,7 @@ function renderRecords() {
         editButton.type = "button";
         editButton.textContent = "Edit";
         editButton.dataset.action = "edit";
+        editButton.classList.add("action-button");
         editButton.dataset.index = String(index);
         deleteButton.type = "button";
         deleteButton.textContent = "Delete";
@@ -125,19 +125,4 @@ function renderRecords() {
         row.append(nameCell, emailCell, dobCell, phoneCell, actionCell);
         recordsContainer.appendChild(row);
     });
-    // recordsContainer.innerHTML = records
-    //   .map(
-    //     (record, index) => `
-    //   <tr>
-    //       <td>${record.name}</td>
-    //       <td>${record.email}</td>
-    //       <td>${record.dob}</td>
-    //       <td>${record.phone}</td>
-    //       <td>
-    //         <button type="button" data-action="edit" data-index="${index}">Edit</button>
-    //         <button type="button" data-action="delete" data-index="${index}">Delete</button>
-    //       </td>
-    //   </tr>`,
-    //   )
-    //   .join("");
 }
