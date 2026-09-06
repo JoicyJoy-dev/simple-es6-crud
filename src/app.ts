@@ -58,6 +58,17 @@ form?.addEventListener("submit", (event) => {
   if (phoneErrorElement) phoneErrorElement.textContent = phoneError ?? "";
 
   if (nameError || emailError || dobError || phoneError) {
+    // Accessibilty logic to Focus to field with error
+    if (nameError) {
+      nameInput?.focus();
+    } else if (emailError) {
+      emailInput?.focus();
+    } else if (dobError) {
+      dobInput?.focus();
+    } else if (phoneError) {
+      phoneInput?.focus();
+    }
+
     return;
   }
 
@@ -75,7 +86,6 @@ form?.addEventListener("submit", (event) => {
     editingIndex = null;
   }
 
-  console.log("Form submitted.", records);
   renderRecords();
   form.reset();
 });

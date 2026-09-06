@@ -15,9 +15,9 @@
     </header>
 
     <main>
-      <h2>Enter your details</h2>
+      <h2 id="form-heading">Enter your details</h2>
 
-      <form id="details-form" novalidate>
+      <form id="details-form" aria-labelledby="form-heading" novalidate>
         <div class="form-row">
           <div>
             <label for="name">Name</label>
@@ -27,7 +27,7 @@
               type="text"
               aria-describedby="name-error"
             />
-            <p id="name-error" class="error-message"></p>
+            <p id="name-error" class="error-message" role="alert"></p>
           </div>
 
           <div>
@@ -38,7 +38,7 @@
               type="email"
               aria-describedby="email-error"
             />
-            <p id="email-error" class="error-message"></p>
+            <p id="email-error" class="error-message" role="alert"></p>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
               type="date"
               aria-describedby="dob-error"
             />
-            <p id="dob-error" class="error-message"></p>
+            <p id="dob-error" class="error-message" role="alert"></p>
           </div>
 
           <div>
@@ -62,7 +62,7 @@
               type="tel"
               aria-describedby="phone-error"
             />
-            <p id="phone-error" class="error-message"></p>
+            <p id="phone-error" class="error-message" role="alert"></p>
           </div>
         </div>
 
@@ -73,13 +73,16 @@
         <h2 id="records-heading">Submitted details</h2>
 
         <table>
+          <caption>
+            Submitted personal details
+          </caption>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Date of birth</th>
-              <th>Phone number</th>
-              <th>Actions</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Date of birth</th>
+              <th scope="col">Phone number</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
 

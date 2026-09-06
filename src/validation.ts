@@ -25,14 +25,15 @@ export function validateDOB(dob: string): string | null {
 
   return null;
 }
-export function validatePhone(phone: string): string | null {
-  const digits = phone.replace(/\D/g, "");
 
+export function validatePhone(phone: string): string | null {
   if (phone.trim() === "") return "Phone number is required";
 
   if (!/^[+0-9\s()-]+$/.test(phone)) {
     return "Enter a valid phone number";
   }
+
+  const digits = phone.replace(/\D/g, "");
 
   if (digits.length < 10) {
     return "Enter a valid phone number";

@@ -4,10 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "node --test"
+    "test": "tsc -p tsconfig.test.json && node --test dist-test/tests/*.test.js"
   },
   "devDependencies": {
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^26.4.1",
+    "jsdom": "^29.1.1",
     "typescript": "^7.0.2"
   }
 }

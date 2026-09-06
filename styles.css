@@ -9,8 +9,15 @@ body {
   color: #1b1b1b;
   background-color: #ffffff;
 }
+
 input {
   height: 2rem;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #005ea8;
+  outline-offset: 2px;
 }
 
 header {
@@ -43,8 +50,8 @@ form > div {
 
 .form-row {
   display: flex;
-  gap: 0.5rem;
-  width: 520px;
+  gap: 1rem;
+  width: 100%;
 }
 
 .form-row > div {
@@ -52,7 +59,7 @@ form > div {
 }
 
 .form-row input {
-  width: 90%;
+  width: 100%;
 }
 
 table {
@@ -78,5 +85,16 @@ th {
 }
 
 input[aria-invalid="true"] {
-  border: 1px solid #d4351c;
+  border: 2px solid #d4351c;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  form {
+    max-width: 100%;
+    padding: 1rem;
+  }
 }
