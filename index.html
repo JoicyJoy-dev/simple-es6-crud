@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Personal details</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Personal details</h1>
+    </header>
+
+    <main>
+      <h2>Enter your details</h2>
+
+      <form id="details-form" novalidate>
+        <div class="form-row">
+          <div>
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              aria-describedby="name-error"
+            />
+            <p id="name-error" class="error-message"></p>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              aria-describedby="email-error"
+            />
+            <p id="email-error" class="error-message"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="dob">Date of birth</label>
+            <input
+              id="dob"
+              name="dob"
+              type="date"
+              aria-describedby="dob-error"
+            />
+            <p id="dob-error" class="error-message"></p>
+          </div>
+
+          <div>
+            <label for="phone">Phone number</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              aria-describedby="phone-error"
+            />
+            <p id="phone-error" class="error-message"></p>
+          </div>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <section aria-labelledby="records-heading">
+        <h2 id="records-heading">Submitted details</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Date of birth</th>
+              <th>Phone number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="records"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script type="module" src="./dist/app.js"></script>
+  </body>
+</html>
